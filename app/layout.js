@@ -1,4 +1,17 @@
+import { Outfit, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+
+const outfit = Outfit({
+  subsets: ["latin"],
+  variable: "--font-outfit",
+  display: "swap",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-jetbrains-mono",
+  display: "swap",
+});
 
 export const metadata = {
   title: "ITZ FIZZ // Kinetic Hypercar Scroll Experience",
@@ -17,8 +30,8 @@ export const viewport = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="dark">
-      <body className="bg-[#08090b] text-white selection:bg-[#00ff87] selection:text-black min-h-screen">
+    <html lang="en" className={`dark ${outfit.variable} ${jetbrainsMono.variable}`}>
+      <body className="bg-[#08090b] text-white font-sans selection:bg-[#00ff87] selection:text-black min-h-screen">
         {children}
       </body>
     </html>

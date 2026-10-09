@@ -66,23 +66,23 @@ export function useHeroAnimation({
 
     // gsap.context records all animations for clean revert on unmount/hot-reload
     const ctx = gsap.context(() => {
+      const letters = headlineRef.current?.querySelectorAll(".hero-letter") || [];
+      const cards = statsRef.current?.querySelectorAll(".stat-card") || [];
+      const counters = statsRef.current?.querySelectorAll(".stat-counter") || [];
+      const carTarget = carWrapperRef.current || carRef.current;
+
       // -------------------------------------------------------------
       // 1. ACCESSIBILITY: REDUCED MOTION SAFE MODE
       // -------------------------------------------------------------
       if (prefersReducedMotion) {
-        gsap.set(
-          [
-            headlineRef.current?.querySelectorAll(".hero-letter"),
-            carWrapperRef.current,
-            carRef.current,
-            trailRef.current,
-            statsRef.current?.querySelectorAll(".stat-card"),
-          ],
-          { opacity: 1, x: 0, y: 0, filter: "none", clearProps: "transform" }
-        );
+        gsap.set([letters, carTarget, carRef.current, trailRef.current, cards], {
+          opacity: 1,
+          x: 0,
+          y: 0,
+          filter: "none",
+          clearProps: "transform",
+        });
 
-        // Immediate number target display
-        const counters = statsRef.current?.querySelectorAll(".stat-counter") || [];
         counters.forEach((el) => {
           el.textContent = el.getAttribute("data-target") || "0";
         });
@@ -99,7 +99,6 @@ export function useHeroAnimation({
       });
 
       // A. Headline letter stagger (opacity 0 -> 1, y: 42 -> 0, blur -> sharp)
-      const letters = headlineRef.current?.querySelectorAll(".hero-letter") || [];
       if (letters.length > 0) {
         introTl.fromTo(
           letters,
@@ -121,7 +120,6 @@ export function useHeroAnimation({
       }
 
       // B. Car entrance slide/fade-in (isolated on carWrapper to avoid scroll property conflict)
-      const carTarget = carWrapperRef.current || carRef.current;
       if (carTarget) {
         introTl.fromTo(
           carTarget,
@@ -143,7 +141,6 @@ export function useHeroAnimation({
       }
 
       // C. Impact stats cards staggered entrance
-      const cards = statsRef.current?.querySelectorAll(".stat-card") || [];
       if (cards.length > 0) {
         introTl.fromTo(
           cards,
@@ -164,7 +161,6 @@ export function useHeroAnimation({
       }
 
       // D. Number count-up from 0 to target value
-      const counters = statsRef.current?.querySelectorAll(".stat-counter") || [];
       counters.forEach((el) => {
         const rawTarget = parseFloat(el.getAttribute("data-target")) || 0;
         const countObj = { val: 0 };

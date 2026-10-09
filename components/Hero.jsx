@@ -3,10 +3,11 @@ import React, { useRef } from "react";
 import CarVisual from "@/components/CarVisual";
 import StatCard from "@/components/StatCard";
 import { useHeroAnimation } from "@/hooks/useHeroAnimation";
-import { ChevronDown, Sparkles, Activity, ShieldCheck, Zap } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 
 /**
  * Headline text tokens for accessible letter-by-letter staggered animation.
+ * Matches reference letter-spacing: W E L C O M E   I T Z   F I Z Z
  */
 const HEADLINE_WORDS = [
   { text: "WELCOME", id: "w1" },
@@ -15,44 +16,40 @@ const HEADLINE_WORDS = [
 ];
 
 /**
- * High-impact metric statistics
+ * Impact metrics — aligned with the assignment reference demo.
  */
 const STATS_DATA = [
   {
-    targetValue: 87,
+    targetValue: 58,
     suffix: "%",
-    title: "Faster Delivery",
-    description: "Zero-latency motion pipeline & optimized 60fps frame budgets.",
+    title: "Pickup Point Use",
+    description: "Increase in pick up point use across active routes.",
     accent: "green",
-    badge: "Velocity",
-    icon: Zap,
-  },
-  {
-    targetValue: 3,
-    suffix: "x",
-    title: "Engagement",
-    description: "Immersive kinetic interactions and tactile depth cues.",
-    accent: "cyan",
     badge: "Growth",
-    icon: Activity,
   },
   {
-    targetValue: 99,
+    targetValue: 23,
     suffix: "%",
-    title: "Satisfaction",
-    description: "Flawless rendering performance across mobile and desktop displays.",
+    title: "Fewer Phone Calls",
+    description: "Decreased in customer phone calls after rollout.",
+    accent: "cyan",
+    badge: "Support",
+  },
+  {
+    targetValue: 27,
+    suffix: "%",
+    title: "Pickup Adoption",
+    description: "Increase in pick up point use for repeat customers.",
     accent: "amber",
-    badge: "Quality",
-    icon: ShieldCheck,
+    badge: "Reach",
   },
   {
     targetValue: 40,
     suffix: "%",
-    title: "Cost Saved",
-    description: "GPU-accelerated compositing minimizing CPU overhead.",
+    title: "Call Volume Drop",
+    description: "Decreased in customer phone calls week over week.",
     accent: "red",
     badge: "Efficiency",
-    icon: Sparkles,
   },
 ];
 
@@ -203,7 +200,7 @@ export default function Hero() {
           {/* Entrance wrapper + Scroll translation node */}
           <div
             ref={carWrapperRef}
-            className="relative z-20 will-change-transform"
+            className="hero-car-entrance relative z-20 will-change-transform"
           >
             <div
               ref={carRef}

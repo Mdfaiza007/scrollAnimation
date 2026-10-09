@@ -21,7 +21,7 @@ body {
   background-color: var(--background);
   color: var(--foreground);
   overflow-x: hidden;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: var(--font-outfit), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -73,8 +73,21 @@ html.lenis body {
   perspective: 1000px;
 }
 
+/* Prevent FOUC — GSAP intro timeline reveals these */
+.hero-letter,
+.stat-card,
+.hero-car-entrance {
+  opacity: 0;
+}
+
 /* Reduced motion accessibility */
 @media (prefers-reduced-motion: reduce) {
+  .hero-letter,
+  .stat-card,
+  .hero-car-entrance {
+    opacity: 1;
+  }
+
   *,
   *::before,
   *::after {

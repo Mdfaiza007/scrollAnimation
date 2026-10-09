@@ -59,7 +59,7 @@ A premier, high-performance scroll-driven hero section animation built for a sen
 - **Headline Stagger**: Letters of `"WELCOME ITZ FIZZ"` reveal sequentially with `opacity: 0 -> 1`, `y: 42 -> 0`, and `filter: blur(10px) -> blur(0px)` using `power3.out`.
 - **Accessible Letter Splitting**: Screen-reader accessible using `aria-label="WELCOME ITZ FIZZ"` on the parent `<h1 />` while marking individual span letters with `aria-hidden="true"`.
 - **Vehicle Entrance**: A gentle slide and scale entrance (`x: -90 -> 0`, `scale: 0.94 -> 1`) overlapping seamlessly with the headline reveal.
-- **Metric Cards & Count-Up**: Four cards stagger in (`stagger: 0.15s`), while counters interpolate from `0` to `87%`, `3x`, `99%`, and `40%` using `power2.out`.
+- **Metric Cards & Count-Up**: Four cards stagger in (`stagger: 0.15s`), while counters interpolate from `0` to `58%`, `23%`, `27%`, and `40%` using `power2.out`.
 
 ### 2. Pinned Scroll-Driven Kinematics (ScrollTrigger + Lenis)
 - **Pinning & Scrub**: The hero section pins (`pin: true`) for `+=180%` scroll duration with `scrub: 1.2` interpolation.

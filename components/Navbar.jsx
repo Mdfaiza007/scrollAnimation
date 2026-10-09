@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { Gauge, Sparkles, Github } from "lucide-react";
+import { Gauge, Github } from "lucide-react";
 
 export default function Navbar() {
   return (
